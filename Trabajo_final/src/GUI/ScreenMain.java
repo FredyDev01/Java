@@ -7,6 +7,8 @@ import DEV.ClassHistorial.TipoTransaccion;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
+import devlibrerias.Libreria_imagenes;
+import java.awt.image.BufferedImage;
 
 /**
  *
@@ -39,8 +41,9 @@ public final class ScreenMain extends javax.swing.JFrame {
         setEventKeyNumbers();
         //Generar cambios en la pantalla
         changeStateCashier();
+        setImagesCajero();
     }
-
+    
     public void setEventKeyNumbers() {
         for(Component cmp: ctnNumberButtons.getComponents()) {
             if(cmp instanceof JButton btn) {
@@ -49,6 +52,19 @@ public final class ScreenMain extends javax.swing.JFrame {
                 });
             }
         }
+    }
+    
+    public void setImagesCajero() {
+        String pathImage1 = "src/assets/iconoCancelar.png";
+        String pathImage2 = "src/assets/iconoBorrar.png";
+        String pathImage3 = "src/assets/iconoAceptar.png";
+        Libreria_imagenes resize = new Libreria_imagenes();
+        BufferedImage getImage1 = resize.getImageResize(pathImage1, 14, 14);
+        BufferedImage getImage2 = resize.getImageResize(pathImage2, 14, 14);
+        BufferedImage getImage3 = resize.getImageResize(pathImage3, 14, 14);
+        btnCancel.setIcon(new ImageIcon(getImage1));
+        btnDelete.setIcon(new ImageIcon(getImage2));
+        btnOk.setIcon(new ImageIcon(getImage3));
     }
     
     public void changeStateCashier() {
@@ -68,8 +84,8 @@ public final class ScreenMain extends javax.swing.JFrame {
         switch (estado) {
             case LOGIN -> {
                 login = true;
-                select2 = true;
-                txtSelect2 = "Ingresar";
+                select1 = true;
+                txtSelect1 = "Ingresar";
             }
             case CAJERO -> {
                 initCashier = true;
@@ -156,6 +172,7 @@ public final class ScreenMain extends javax.swing.JFrame {
         ctnNumberButtons.setMaximumSize(new java.awt.Dimension(100, 100));
         ctnNumberButtons.setMinimumSize(new java.awt.Dimension(100, 100));
         ctnNumberButtons.setOpaque(false);
+        ctnNumberButtons.setPreferredSize(new java.awt.Dimension(169, 169));
         ctnNumberButtons.setLayout(new java.awt.GridLayout(4, 3, 5, 5));
 
         jButton4.setBackground(new java.awt.Color(26, 26, 63));
@@ -248,6 +265,8 @@ public final class ScreenMain extends javax.swing.JFrame {
         btnCancel.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("Cancelar");
+        btnCancel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnCancel.setIconTextGap(8);
         btnCancel.setPreferredSize(new java.awt.Dimension(84, 32));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -259,6 +278,8 @@ public final class ScreenMain extends javax.swing.JFrame {
         btnDelete.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("Borrar");
+        btnDelete.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnDelete.setIconTextGap(8);
         btnDelete.setPreferredSize(new java.awt.Dimension(71, 32));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,6 +291,8 @@ public final class ScreenMain extends javax.swing.JFrame {
         btnOk.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         btnOk.setForeground(new java.awt.Color(255, 255, 255));
         btnOk.setText("Aceptar");
+        btnOk.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+        btnOk.setIconTextGap(8);
         btnOk.setPreferredSize(new java.awt.Dimension(77, 32));
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,14 +341,12 @@ public final class ScreenMain extends javax.swing.JFrame {
         pnlLogin.setOpaque(false);
 
         tltCajero.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
-        tltCajero.setForeground(new java.awt.Color(0, 0, 0));
         tltCajero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tltCajero.setText("Gestiona tu usuario");
 
         inpUsuario.setBackground(new java.awt.Color(103, 126, 92));
         inpUsuario.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         inpUsuario.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Usuario", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 12))); // NOI18N
-        inpUsuario.setOpaque(false);
 
         inpMontoInicial.setBackground(new java.awt.Color(103, 126, 92));
         inpMontoInicial.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
@@ -370,8 +391,8 @@ public final class ScreenMain extends javax.swing.JFrame {
         jPanel9.setLayout(new java.awt.GridBagLayout());
 
         lblSelect1.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        lblSelect1.setForeground(new java.awt.Color(0, 0, 0));
         lblSelect1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblSelect1.setText("Ingresar");
         lblSelect1.setPreferredSize(new java.awt.Dimension(60, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -379,9 +400,7 @@ public final class ScreenMain extends javax.swing.JFrame {
         jPanel9.add(lblSelect1, gridBagConstraints);
 
         lblSelect2.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        lblSelect2.setForeground(new java.awt.Color(0, 0, 0));
         lblSelect2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblSelect2.setText("Ingresar");
         lblSelect2.setPreferredSize(new java.awt.Dimension(60, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -389,7 +408,6 @@ public final class ScreenMain extends javax.swing.JFrame {
         jPanel9.add(lblSelect2, gridBagConstraints);
 
         lblSelect3.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
-        lblSelect3.setForeground(new java.awt.Color(0, 0, 0));
         lblSelect3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSelect3.setPreferredSize(new java.awt.Dimension(60, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -512,7 +530,7 @@ public final class ScreenMain extends javax.swing.JFrame {
 
     private void btnSelect3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect3ActionPerformed
         if(info_cajero.obtenerEstadoActual() == EstadoActual.CAJERO) {
-            int respuesta = JOptionPane.showConfirmDialog(null, "Si quiere salir sus datos se borraran del cajero.", "¿Seguro de salir?", JOptionPane.YES_NO_OPTION);
+            int respuesta = JOptionPane.showConfirmDialog(null, "Al salir sus datos se borraran del cajero.", "¿Seguro de salir?", JOptionPane.YES_NO_OPTION);
             if(respuesta == JOptionPane.YES_OPTION) {
                 System.exit(0);
             }
@@ -527,6 +545,14 @@ public final class ScreenMain extends javax.swing.JFrame {
     }//GEN-LAST:event_inpMontoInicialKeyTyped
 
     private void btnSelect2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect2ActionPerformed
+        if(info_cajero.obtenerEstadoActual() == EstadoActual.CAJERO) {
+            info_cajero.cambiarEstadoTransaccion();
+            info_cajero.setDepositando(false);
+            changeStateCashier();
+        }
+    }//GEN-LAST:event_btnSelect2ActionPerformed
+
+    private void btnSelect1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect1ActionPerformed
         if(info_cajero.obtenerEstadoActual() == EstadoActual.LOGIN) {
             String usuario = inpUsuario.getText();
             String montoInicial = inpMontoInicial.getText();
@@ -539,14 +565,6 @@ public final class ScreenMain extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Debe llenar todos los campos.", "Formulario invalido", JOptionPane.ERROR_MESSAGE);
             }            
         }else if(info_cajero.obtenerEstadoActual() == EstadoActual.CAJERO) {
-            info_cajero.cambiarEstadoTransaccion();
-            info_cajero.setDepositando(false);
-            changeStateCashier();
-        }
-    }//GEN-LAST:event_btnSelect2ActionPerformed
-
-    private void btnSelect1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelect1ActionPerformed
-        if(info_cajero.obtenerEstadoActual() == EstadoActual.CAJERO) {
             info_cajero.cambiarEstadoTransaccion();
             info_cajero.setDepositando(true);
             changeStateCashier();

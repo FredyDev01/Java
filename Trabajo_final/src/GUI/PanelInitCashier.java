@@ -23,6 +23,7 @@ public class PanelInitCashier extends javax.swing.JPanel {
      */
     public PanelInitCashier() {
         initComponents();
+        txtHistorial.setText("Sin operaciones hasta el momento.");
     }
 
     public void setUsuario(String usuario) {
@@ -50,7 +51,9 @@ public class PanelInitCashier extends javax.swing.JPanel {
             }else {
                 doc.insertString(doc.getLength(), "No hay operaciones recientes.", null);
             }
-        }catch(BadLocationException e) {}
+        }catch(BadLocationException e) {
+            e.getLocalizedMessage();
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,6 +90,7 @@ public class PanelInitCashier extends javax.swing.JPanel {
         txtHistorial.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Historial", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 12))); // NOI18N
         txtHistorial.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtHistorial.setFocusable(false);
+        txtHistorial.setMargin(new java.awt.Insets(0, 0, 0, 0));
         txtHistorial.setMaximumSize(new java.awt.Dimension(11, 22));
         jScrollPane2.setViewportView(txtHistorial);
 
@@ -97,16 +101,12 @@ public class PanelInitCashier extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, 0)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(tltCajero1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(40, 40, 40))
+                    .addComponent(txtMonto)
+                    .addComponent(txtUsuario)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtMonto)
-                            .addComponent(txtUsuario))
-                        .addGap(0, 0, 0))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tltCajero1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(40, 40, 40))))
         );
         layout.setVerticalGroup(

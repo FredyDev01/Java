@@ -69,7 +69,6 @@ public class PanelTransaction extends javax.swing.JPanel {
         txtMonto.setFont(new java.awt.Font("Ubuntu", 0, 12)); // NOI18N
         txtMonto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Monto", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Ubuntu", 0, 12))); // NOI18N
         txtMonto.setFocusable(false);
-        txtMonto.setOpaque(false);
         txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMontoKeyTyped(evt);
